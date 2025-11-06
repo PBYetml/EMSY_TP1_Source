@@ -1,8 +1,8 @@
-# TP1 - Installation Linux sur une VM - V0.1
+v# TP1 - Installation Linux sur une VM - V0.1
 
 ## Groupe 
 
-- vos noms 
+- Luc Derré - Bonny Mathéo
 
 ## But 
 
@@ -19,7 +19,7 @@ A. Lancez VMware Workstation Player (logiciel)
 
 B. Sélectionnez **Create a New Virtual Machine** 
 
-C. Placez le fichier `.iso` dans une repertoire connu : 
+C. Placez le fichier `.iso` dans un repertoire connu : 
 
 `C:\VosInitiales\VM\ISO`
 
@@ -29,7 +29,6 @@ D. Indiquez le chemin d’accès de l’image iso comme indiqué sous l’image 
 
 E. Choisir un nom d'OS : `Linux - Debian 11.x` 
 
-![OS name choice](/Images/OS_Choice.jpg) 
 
 F. Nommez la machine virtuelle : `SparkyLinux-VosInitiales` 
 
@@ -39,7 +38,7 @@ G. Creez un disque virtuel -> capcité : **20GB**
 
 ![Virtual disk](/Images/VirtualDisk.jpg) 
 
-> remarque$$^2$$ : ci-dessous, la configuration de la VM 
+> remarque: ci-dessous, la configuration de la VM 
 
 ![Virtual disk](/Images/VM_Config.jpg) 
 
@@ -49,79 +48,259 @@ H. Lancez la machine virtuelle : **Play virtual machine**
 
 G. Lancement du live CD : 
 
-[Placer votre capture d'écran]() 
+![Virtual disk](/Images/Linux-dep1.png) 
 
 Shell Linux : 
 
-[Placer votre capture d'écran]() 
+![Virtual disk](/Images/linux-shell.png) 
 
 > **ATTENTION** : par défaut, le clavier est configuré est **Clavier Americain**
 
 Q1. disposition du clavier américain ?
 
-> votre réponse ?!
+>Qwerty
 
 Q2. disposition du clavier suisse-romand ?
 
-> votre réponse ?!
+>Qwertz
 
 Q3. disposition du le clavier français ? 
 
-> votre réponse ?!
+>Azerty
 
 
 H. Déplacez-vous à la **racine du système** en utilisant la commande suivante : `cd` 
 
-> vore commande ?!
 
 I. Affichez le contenu de la racine avec la commande : `ls –l`	
 
-![Placer votre capture d'écran]() 
+![Virtual disk](/Images/ls-l.png) 
 
 Q5. Que signifie l'option `-l` avec la commande `ls` 
 
-> votre réponse ?!
+>le `ls` liste les fichiers du système
+
+>et le `-l` liste les options du fichier
 
 Q6. Décrypter la ligne où se trouve le répertoire **home**    
+![Virtual disk](/Images/home.png) 
 
-[Placer votre capture d'écran]()
-
-> votre réponse ?!
+>drwxr-xr-x:(d)indique un répertoire (rwx) qui correspond aux permissions du propriétaire, le r pour le read du contenu, le w pour write pour être capable d'ajouter/enlever des fichiers et sous répertoir, x pour accès au contenu du répertoire et aux fichiers qu'il contient.
+>
+> r-x correspond au droit pour le groupe et x autorise l'accès au répertoire,
+>
+>'-' indique qu'il n'y a pas de permission d'écrire par le groupe et x autorise l'accès au répertoire.
+>
+> le deuxième r-x correspond aux droit pour les autres utilisateurs.
+>
+> 1 root root indique le nombre de personnes liées au dossier.
+>
+> Le premier root indique l'utilisateur qui possède le répertoire et le deuxième indique le groupe auquel appartient au répertoire.
+>
+> Le nombre 60 correspond a l'espace utilisé en octet.
+>
+> Enfin la date est indiquée en format (mois/jours/heure).
 
 J. Créez un répertoire de travail nommé « EMSY_VosInitiales» dans quel dossier racine allez-vous le placer (justifiez votre réponse) et quelle commande allez-vous utiliser. 
 
-> votre commande ?! 
+>dans le répertoire home car c'est un répertoire personnel
+>
+>.cd home `mkdir EMSY_MBY`
+
 
 Q7. Si vous créez un répertoire de travail (pour éditer/sauvegarder des fichiers), dans quelle **répertoire racine** vous vous placez ? 
 
-> votre réponse ?!
+> home
 
 
 K. Dans ce répertoire, créez un fichier texte que vous nommerez `TESTSLO_XXX_XXX` et éditez celui en écrivant un texte, exemple : "TP linux by XXX et XXX".
 	Utiliser la commande `vi`
 
-> votre commande ?! 
+> `vi TESTSLO_LDE_MBY`
 
 Q9. dans le répertoire `/home`, pouvez-vous éditez un fichier uniquement avec la commande `vi` 
 
-> votre réponse ?!
+> oui
 
 Q10. Si vous éteignez la machine virtuelle et que vous la rallumez, est-ce que le répertoire créé ci-dessus existe toujours (justifiez votre réponse) ? 
 
-> votre réponse ?!
+> Oui car éteindre  et allumer ne supprime pas les fichiers stockés sur le disque virtuel, et les dossiers dans le home sont écrits sur ce disque virtuel
 
 L. Tapez la commande `ls -l /dev/sda` 
 
-![Placer votre capture d'écran]() 
+![Virtual disk](/Images/devsda.png) 
 
 Q11. Que signifie **sda** ? 
 
-> votre réponse ?!
+> SDA signifie que c'est le premier disque dur SCSI le disque dur principal(small Computer system Interface)
+
+> le disque entier de la VM
 
 Q12. Décrypter la réponse après avoir taper la commande `ls -l /dev/sda` -> voir résultat point 13.
 
-> votre réponse ?!
+> b: indique un fichier de périphérique bloc. rw-rw---- : les permissions du fichier. 1 : le nombre de liens physiques vers le fichier . root: le propriétaire. disk: le groupe auquel appartient le fichier 8,0: numéros majeur et mineur.
 
+> la date et l'heure et enfin le disque entier
+
+
+Q13. Quelle est la taille de disque minimum recommandée pour installer la distribution Sparky ?
+
+>10G pour la recommandée standard
+
+>20G pour la multimédia
+
+>2G pou la version en ligne (CLI)
+
+![Virtual disk](/Images/console.png) 
+
+
+Q14. A quoi sert la partition swap ? Est-ce que ce principe existe sur les OS Microsoft Windows ?
+
+>c'est une section dédiée du disque dur utilisée comme mémoire virtuelle. C'est un endroit d'overflow dédié pour la RAM du système
+>
+>ça propose du stockage supplémentaire
+
+
+Q15. Quel format pourriez-vous utiliser pour la 3ème partition afin qu’elle soit également accessible depuis un OS Microsoft ?
+
+>Microsoft basic data qui est une partition de type exFAT compatible avec windows
+
+
+Q16. Durant l’installation, on vous demande deux noms d’utilisateur. A quoi correspondent-ils ?
+
+>un super utilisateur(admin)
+>
+>un utilisateur normal 
+
+
+N. Après l’installation de Linux, prenez une capture d’écran du démarrage de votre système (GRUB).
+
+![install image disk](/Images/GRUB.jfif) 
+
+
+O.Trouvez la ou les lignes de commande permettant de changer le clavier (clavier suisse romand trouvable sous « German (Switzerland)) et procédez à la configuration du clavier.
+
+`sudo nano /etc/default/keyboard`
+
+![install image disk](/Images/language.png) 
+
+>afin d'obtenir les modification il faut redémarrer la VM
+
+P.Testez si l’application « nano » est installée sur votre machine, tapez la commande :
+`nano --version`
+
+![install image disk](/Images/nano.png) 
+
+>on voit la dernière version du programme nano
+
+Q17. À quoi sert « nano » ?
+
+>c'est un éditeur de texte pour écrire dans les fichiers qui peut être lancé via une commande
+
+
+Q.Testez si l’application « git » est installée sur votre distribution, si ce n’est pas le cas installez un client git.
+
+
+Q18. Comment savoir si « git » est déjà installé ?
+
+>`git --version`
+
+>après avoir fait cette commande le bash ne trouve pas la commande
+
+Q19. Quelle(s) commande(s) utilisez-vous pour l’installer ?
+
+>`sudo apt-get install git`
+
+
+Q20. Que veut dire « apt » ?
+
+>apt sinifie est le gestionnaire d'installation/desinstallation des applications (logiciels)
+
+
+Q21. Est-ce que cette commande peut être utilisée sur toutes les distributions Linux ?
+
+>seulement sur les distibutions basées sur Ubuntu/Debian/Mint
+
+
+LABO EMSY ETML-ES
+
+
+PBY/NMI/SCA EMSY01 TP1A - InstVMLinux_v2_6.docx 5/5
+R.Créez un sous-répertoire « EMSY_TP1_XXX-YYY » dans le répertoire de votre utilisateur. Attention : Ici on veut que l’utilisateur (vous) ait les droits de lecture, d’écriture et d’exécution. 
+
+Q22. Quel est le répertoire utilisateur ?
+
+>LDE
+
+Q23. Quelles sont les commandes que vous allez utiliser ?
+
+>`cd home/lde` ce qui signifie qu'on va dans le répertoire de l'utilisateur
+>
+>`mkdir EMSY_TP1_Bonny_Matheo`
+
+![install image disk](/Images/repertoire.png) 
+
+S.Dans ce répertoire, tapez la commande :
+
+`git clone https://github.com/votreDepot/EMSY_TP1_Source`
+
+![install image disk](/Images/clone.png) 
+
+
+
+Il faut au préalable que vous ayez mis en place à cette adresse un fork du dépôt fourni.
+
+
+Q24. Qu’observez-vous dans votre répertoire ?
+
+> j'ai mon dossier .c mes images et mon Read.me
+
+T.Editez le fichier source .c avec l’éditeur de texte « nano ».
+
+>`nano`
+
+
+
+Réalisez un petit programme en C (par exemple de type « Hello world »).
+
+![install image disk](/Images/helloworld.png) 
+
+U.Vérifiez si le compilateur « gcc » est bien installé.
+
+>`gcc --version`
+
+
+![install image disk](/Images/gcc.png) 
+
+Notez la version du logiciel.
+
+> la version 10.2.1
+
+Tapez les commandes suivantes :
+
+
+`gcc -Wall -o fichier.o -c fichier.c`
+
+
+`gcc -o fichier fichier.o`
+
+
+Remarque : « fichier » est à remplacer par le nom de votre choix
+
+
+Q25. Quels sont les fichiers qui ont été générés ?
+
+>EMSY_TP1.o et EMSY_TP1
+
+
+V.Entrez la commande suivante :
+
+`./fichier`
+
+
+Q26. Que se passe-t-il ?
+
+>Le code s'exécute et le string "Hello World" est affiché dans mon bash
 
 ## Tips 
 
